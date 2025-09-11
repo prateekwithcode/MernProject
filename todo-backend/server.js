@@ -9,8 +9,17 @@ const todoRoutes = require('./routes/todo.routes');
 // Initialize Express app
 const app = express();
 
+const corsOptions = {
+  // This is the important part!
+  // It tells your backend to accept requests from this specific URL.
+  origin: 'https://todo-appapi.netlify.app'
+};
+
+app.use(cors(corsOptions));
+
+
 // Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+// app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // To parse JSON bodies
 
 // Connect to MongoDB
